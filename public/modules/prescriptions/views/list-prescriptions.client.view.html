@@ -1,0 +1,19 @@
+<section data-ng-controller="PrescriptionsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Prescriptions</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="prescription in prescriptions" data-ng-href="#!/prescriptions/{{prescription._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="prescription.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="prescription.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="prescription.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!prescriptions.$resolved || prescriptions.length">
+    	No Prescriptions yet, why don't you <a href="/#!/prescriptions/create">create one</a>?
+    </div>
+</section>

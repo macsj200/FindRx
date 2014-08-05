@@ -2,15 +2,16 @@
 
 angular.module('rxes').directive('prescription', [
 	function() {
-		return {
-			template: '<div></div>',
-			restrict: 'E',
-			link: function postLink(scope, element, attrs) {
-				// Prescription directive logic
-				// ...
-
-				element.text('this is the prescription directive');
-			}
-		};
+        return {
+            restrict: 'E',
+            scope: {
+                rx: '=',
+                position: '='
+            },
+            templateUrl:'/modules/rxes/templates/prescription.client.template.html',
+            link: function(scope, element, attrs){
+                scope.eye = scope.rx[scope.position];
+            }
+        };
 	}
 ]);
