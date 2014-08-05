@@ -10,12 +10,10 @@ var mongoose = require('mongoose'),
  * Medium Schema
  */
 var MediumSchema = new Schema({
-	name: {
-		type: String,
-		default: '',
-		required: 'Please fill Medium name',
-		trim: true
-	},
+    src: {
+        type: String,
+        trim: true
+    },
 	created: {
 		type: Date,
 		default: Date.now
