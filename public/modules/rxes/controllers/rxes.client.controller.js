@@ -22,6 +22,7 @@ angular.module('rxes').controller('RxesController', ['$scope', '$stateParams', '
             var leftEyeId = '';
 
             //save eye objects
+            //todo fix this unreadable syntax
             leftEye.$save(function(response) {
                 leftEyeId = response._id;
 
