@@ -45,7 +45,8 @@
     "async": "~0.9.0",
     "nodemailer": "~1.1.1",
     "fs-extra": "~0.10.0",
-    "formidable": "~1.0.15"
+    "formidable": "~1.0.15",
+    "multiparty": "~3.3.1"
   },
   "devDependencies": {
     "supertest": "~0.13.0",

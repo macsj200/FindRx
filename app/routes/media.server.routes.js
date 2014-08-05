@@ -7,7 +7,8 @@ module.exports = function(app) {
 	// Media Routes
 	app.route('/media')
 		.get(media.list)
-		.post(users.requiresLogin, media.create);
+        // commented out to use postman (maybe actually necessary?)
+		.post(/*users.requiresLogin,*/ media.create);
 
 	app.route('/media/:mediumId')
 		.get(media.read)
