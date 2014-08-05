@@ -48,14 +48,14 @@ var getFormSaveFiles = function(req, res, medium, saveCallback) {
         /* Temporary location of our uploaded file */
 //        var temp_path = this.openedFiles[0].path;
 
-        var file = files.file;
+        var file = files.file[0];
 
         var temp_path = file.path;
 
         /* The file name of the uploaded file */
         var file_name = medium._id;
 
-        var suffix = file.name.slice(file.name.lastIndexOf('.'));
+        var suffix = file.originalFilename.slice(file.originalFilename.lastIndexOf('.'));
 
         /* Location where we want to copy the uploaded file */
         var new_location = 'public/media/';
@@ -98,14 +98,14 @@ exports.create = function(req, res) {
     getFormSaveFiles(req, res, medium, function(err) {
         //this callback is for the image only
         if (err) {
-            return res.send(400, {
+            return res.status(400).send({
                 message: getErrorMessage(err)
             });
             //do an error response saying something went wrong with the image
         } else {
             medium.save(function(err) {
                 if (err) {
-                    return res.send(400, {
+                    return res.status(400).send({
                         message: getErrorMessage(err)
                     });
                 } else {
