@@ -37,8 +37,6 @@ var getErrorMessage = function(err) {
  * get a form with file(s) and save it
  */
 var getFormSaveFiles = function(req, res, medium, saveCallback) {
-
-    //is this the problem?
     //create new form object
     var form = new multiparty.Form();
 
@@ -75,22 +73,6 @@ var getFormSaveFiles = function(req, res, medium, saveCallback) {
  * Create a Medium
  */
 exports.create = function(req, res) {
-    //problem:  When I do a file upload post with postman,
-    //  I get an 'invalid JSON' 500 error from the backend
-    //  but I can't figure out where JSON is even being parsed
-    //  if you can figure out where this error is coming from
-    //  I can take it from there
-
-    //  grunt is running in the second terminal tab, the other
-    //  tab is just a shell
-
-    //This only happens in postman if I do a file upload, not
-    //  any other kind of form
-
-
-    //I have tried commenting the contents of this function out, it didn't help
-
-    //I really don't think it's this block
     var medium = new Medium();
     medium.user = req.user;
 
