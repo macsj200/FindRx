@@ -145,7 +145,8 @@ exports.delete = function(req, res) {
 /**
  * List of Media
  */
-exports.list = function(req, res) { Medium.find().sort('-created').populate('user', 'displayName').exec(function(err, media) {
+exports.list = function(req, res) {
+    Medium.find().sort('-created').populate('user', 'displayName').exec(function(err, media) {
     if (err) {
         return res.send(400, {
             message: getErrorMessage(err)
