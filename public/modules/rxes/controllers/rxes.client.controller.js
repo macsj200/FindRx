@@ -109,6 +109,12 @@ angular.module('rxes').controller('RxesController', ['$scope', '$stateParams', '
             $scope.rxes = Rxes.query();
         };
 
+        // Search for specific Rxes
+        //currently just an alias to find
+        $scope.search = function(){
+            $scope.find();
+        };
+
         // Find existing Rx
         $scope.findOne = function() {
             $scope.rx = Rxes.get({
