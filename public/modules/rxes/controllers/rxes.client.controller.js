@@ -1,9 +1,9 @@
 'use strict';
 
 // Rxes controller
-angular.module('rxes').controller('RxesController', ['$scope', '$stateParams', '$location', 'Authentication',
+angular.module('rxes').controller('RxesController', ['$scope', '$stateParams', '$location', '$http', 'Authentication',
     'Rxes', 'Prescriptions',
-    function($scope, $stateParams, $location, Authentication, Rxes, Prescriptions) {
+    function($scope, $stateParams, $location, $http, Authentication, Rxes, Prescriptions) {
         $scope.authentication = Authentication;
 
         //Scope variable to store current rx
@@ -110,9 +110,11 @@ angular.module('rxes').controller('RxesController', ['$scope', '$stateParams', '
         };
 
         // Search for specific Rxes
-        //currently just an alias to find
+        //todo figure out how to make this a $resource type thing
         $scope.search = function(){
-            $scope.find();
+            $http.post('rxes/search', $scope.searchParams).success(function(data){
+                $scope.rxes = data;
+            });
         };
 
         // Find existing Rx
