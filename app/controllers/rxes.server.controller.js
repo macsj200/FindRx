@@ -115,7 +115,10 @@ exports.list = function(req, res) {
  * Search an rx
  * currently just an alias to list
  */
-exports.search = exports.list;
+exports.search = function(req, res){
+    console.log(req.body.searchParams);
+    exports.list(req, res);
+};
 
 /**
  * Rx middleware

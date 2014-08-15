@@ -11,7 +11,8 @@ module.exports = function(app) {
 
     app.route('/rxes/search')
         .get(rxes.list)
-        .post(users.requiresLogin, rxes.search);
+        //todo require login
+        .post(/*users.requiresLogin,*/ rxes.search);
 
 	app.route('/rxes/:rxId')
 		.get(rxes.read)
