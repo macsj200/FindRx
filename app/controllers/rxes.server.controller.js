@@ -133,28 +133,30 @@ exports.hasAuthorization = function(req, res, next) {
 };
 
 //insert sample data
-var sampleDB = require('./sampleDB');
-var Prescription = mongoose.model('Prescription');
-for(var i = 0; i < sampleDB.length; i++){
-    var currentGlasses = sampleDB[i];
-
-    var leftEye = new Prescription(currentGlasses.leftEye);
-
-    var rightEye = new Prescription(currentGlasses.rightEye);
-
-    leftEye.save(function(err, data){
-        var leftEyeId = data._id;
-        rightEye.save(function(err, data){
-            var rightEyeId = data._id;
-
-            currentGlasses.leftEye = leftEyeId;
-            currentGlasses.rightEye = rightEyeId;
-
-            var rx = new Rx(currentGlasses);
-
-            rx.save(function(err, data){
-
-            });
-        });
-    });
-}
+//clear db first
+//Rx.remove().exec(function(err, data){});
+//var sampleDB = require('./sampleDB');
+//var Prescription = mongoose.model('Prescription');
+//for(var i = 0; i < 5; i++){
+//    var currentGlasses = sampleDB[i];
+//
+//    var leftEye = new Prescription(currentGlasses.leftEye);
+//
+//    var rightEye = new Prescription(currentGlasses.rightEye);
+//
+//    leftEye.save(function(err, data){
+//        var leftEyeId = data._id;
+//        rightEye.save(function(err, data){
+//            var rightEyeId = data._id;
+//
+//            currentGlasses.leftEye = leftEyeId;
+//            currentGlasses.rightEye = rightEyeId;
+//
+//            var rx = new Rx(currentGlasses);
+//
+//            rx.save(function(err, data){
+//
+//            });
+//        });
+//    });
+//}

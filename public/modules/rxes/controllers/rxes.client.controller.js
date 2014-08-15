@@ -6,9 +6,33 @@ angular.module('rxes').controller('RxesController', ['$scope', '$stateParams', '
     function($scope, $stateParams, $location, Authentication, Rxes, Prescriptions) {
         $scope.authentication = Authentication;
 
+        //Scope variable to store current rx
+        //needed to bind data to creation forms
+        //kinda yucky todo cleanup
         $scope.scopedRx = {
             rightEye: {},
             leftEye: {}
+        };
+
+        //stopgap measure to output scrips prettily
+        //basically strips the extra syntax out of json
+        //todo get rid of this :) (also fix string concat)
+        $scope.outputRx = function(rx){
+            //actual string returned by function
+            var returnedValue = '';
+
+            //add left and right eye to string
+            returnedValue = returnedValue + 'Right eye: ';
+            returnedValue = returnedValue + ' Sphere: ' + rx.rightEye.sphere;
+            returnedValue = returnedValue + ' Cylinder: ' + rx.rightEye.cylinder;
+            returnedValue = returnedValue + ' Axis: ' + rx.rightEye.axis;
+            //exact same thing as right eye just string replaced
+            returnedValue = returnedValue + ' Left eye: ';
+            returnedValue = returnedValue + ' Sphere: ' + rx.leftEye.sphere;
+            returnedValue = returnedValue + ' Cylinder: ' + rx.leftEye.cylinder;
+            returnedValue = returnedValue + ' Axis: ' + rx.leftEye.axis;
+
+            return returnedValue;
         };
 
         // Create new Rx

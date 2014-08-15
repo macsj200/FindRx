@@ -4,6 +4,7 @@
     </div>
     <div class="list-group">
         <a data-ng-repeat="rx in rxes" data-ng-href="#!/rxes/{{rx._id}}" class="list-group-item">
+            {{outputRx(rx)}}
 			<small class="list-group-item-text">
 				Posted on
 				<span data-ng-bind="rx.created | date:'medium'"></span>
