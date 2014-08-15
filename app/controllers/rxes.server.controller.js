@@ -112,6 +112,12 @@ exports.list = function(req, res) {
 };
 
 /**
+ * Search an rx
+ * currently just an alias to list
+ */
+exports.search = exports.list;
+
+/**
  * Rx middleware
  */
 exports.rxByID = function(req, res, next, id) { Rx.findById(id).populate('user', 'displayName').exec(function(err, rx) {

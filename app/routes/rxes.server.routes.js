@@ -9,6 +9,9 @@ module.exports = function(app) {
 		.get(rxes.list)
 		.post(users.requiresLogin, rxes.create);
 
+    app.route('/rxes/search')
+        .post(users.requiresLogin, rxes.search);
+
 	app.route('/rxes/:rxId')
 		.get(rxes.read)
 		.put(users.requiresLogin, rxes.hasAuthorization, rxes.update)
