@@ -10,6 +10,7 @@ module.exports = function(app) {
 		.post(users.requiresLogin, rxes.create);
 
     app.route('/rxes/search')
+        .get(rxes.list)
         .post(users.requiresLogin, rxes.search);
 
 	app.route('/rxes/:rxId')
