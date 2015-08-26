@@ -1,0 +1,13 @@
+<template name="viewOneGlassPage">
+
+    <div class="container">
+
+        {{> findOneGlass glassId=id}}
+
+        {{> glassCreatorControls glassId=id}}
+
+        {{> findReviews docId=id collectionName="glasses"}}
+
+    </div>
+
+</template>
