@@ -1,0 +1,22 @@
+#background {
+    background: url("http://lorempixel.com/output/transport-q-c-1920-1280-4.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-top: -30px;
+}
+
+#splash h1, h2 {
+    /*color: white;*/
+}
+
+#splash {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+}
+
+.jumbotron {
+    background: rgba(255, 255, 255, 0.9) !important;
+    font-weight: bolder !important;
+}

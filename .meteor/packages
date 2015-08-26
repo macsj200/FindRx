@@ -1,0 +1,44 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+orionjs:core
+orionjs:bootstrap
+orionjs:filesystem
+orionjs:file-attribute
+orionjs:summernote
+alethes:pages
+orionjs:s3
+accounts-facebook
+accounts-google
+accounts-twitter
+service-configuration
+accounts-ui
+aldeed:autoform
+meteorhacks:fast-render
+spiderable
+multiply:iron-router-progress
+peppelg:bootstrap-3-modal
+aldeed:delete-button
+matb33:collection-hooks
+ongoworks:security
+fortawesome:fontawesome
+twbs:bootstrap
+ccorcos:clientside-image-manipulation
+jonblum:jquery-cropper
+msavin:mongol
+msavin:jetsetter
+fastclick
+meteoric:ionic
+orionjs:relationships
+meteorhacks:aggregate
+pulsarjs:core
+pulsarjs:security
+pulsarjs:payments
+pulsarjs:reviews
+pulsarjs:navbar
+autopublish
+lukemadera:autoform-googleplace
