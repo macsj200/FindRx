@@ -4,18 +4,34 @@
      <a href="/glasses/{{this._id}}" class="list-group-item">
         <div class="row">
             <div class="col-md-2 text-center ">
-                <h4 class="text-success">
-                    ${{this.price}}
+                <h4>
+                    {{number}}
                 </h4>
             </div>
             <div class="col-md-9">
-                <h4 class="list-group-item-heading">{{this.title}}</h4>
+                <!-- <h4 class="list-group-item-heading">{{this.title}}</h4>
                 <p class="list-group-item-text">{{{this.body}}}</p>
-                <p class="list-group-item-text">{{this.createdOn}}</p>
+                <p class="list-group-item-text">{{this.createdOn}}</p> -->
+                {{#with rightRx}}
+                <h4 class="list-group-item-heading">Right</h4>
+                  {{>rx}}
+                {{/with}}
+
+                {{#with leftRx}}
+                <h4 class="list-group-item-heading">Left</h4>
+
+                  {{>rx}}
+                {{/with}}
             </div>
         </div>
      </a>
 
+</template>
+
+<template name="rx">
+  <p class="list-group-item-text">Sphere {{{this.sphere}}}</p>
+  <p class="list-group-item-text">Cylinder {{{this.cylinder}}}</p>
+  <p class="list-group-item-text">Axis {{this.axis}}</p>
 </template>
 
 

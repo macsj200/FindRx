@@ -40,8 +40,8 @@ Glasses = new orion.collection('glasses', {
     that allowed for each document in this collection.
  */
 Glasses.attachSchema(new SimpleSchema({
-    title: {
-        type: String
+    number: {
+        type: Number
     },
 
     /*
@@ -66,15 +66,44 @@ Glasses.attachSchema(new SimpleSchema({
         }
     }),
 
-    description: {
-        type: String
+    frame: {
+        type: String,
+        optional:true
     },
 
+    lens: {
+        type: String,
+        optional:true
+    },
 
-    price: {
-        type:Number,
-        decimal:true,
-        min:0
+    "leftRx.sphere":{
+      type:Number,
+      decimal:true
+    },
+
+    "leftRx.cylinder":{
+      type:Number,
+      decimal:true
+    },
+
+    "leftRx.axis":{
+      type:Number,
+      // decimal:true
+    },
+
+    "rightRx.sphere":{
+      type:Number,
+      decimal:true
+    },
+
+    "rightRx.cylinder":{
+      type:Number,
+      decimal:true
+    },
+
+    "rightRx.axis":{
+      type:Number,
+      // decimal:true
     },
 
     /*
@@ -85,8 +114,6 @@ Glasses.attachSchema(new SimpleSchema({
     createdAt: orion.attribute('createdAt'),
 
     updatedAt: orion.attribute('updatedAt')
-
-
 }));
 
 /*
