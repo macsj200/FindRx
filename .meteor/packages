@@ -39,6 +39,6 @@ pulsarjs:core
 pulsarjs:security
 pulsarjs:payments
 pulsarjs:reviews
-pulsarjs:navbar
+navbar
 autopublish
 lukemadera:autoform-googleplace
