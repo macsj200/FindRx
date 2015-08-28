@@ -1,25 +1,22 @@
 <template name="glassInFindList">
-
     <!-- This will be repeated inside of the find this -->
      <a href="/glasses/{{this._id}}" class="list-group-item">
         <div class="row">
-            <div class="col-md-2 text-center ">
+            <div class="col-md-4">
                 <h4>
                     {{number}}
                 </h4>
             </div>
-            <div class="col-md-9">
-                <!-- <h4 class="list-group-item-heading">{{this.title}}</h4>
-                <p class="list-group-item-text">{{{this.body}}}</p>
-                <p class="list-group-item-text">{{this.createdOn}}</p> -->
-                {{#with rightRx}}
-                <h4 class="list-group-item-heading">Right</h4>
-                  {{>rx}}
-                {{/with}}
-
+            <div class="col-md-4">
                 {{#with leftRx}}
                 <h4 class="list-group-item-heading">Left</h4>
+                  {{>rx}}
+                {{/with}}
+            </div>
 
+            <div class="col-md-4">
+                {{#with rightRx}}
+                <h4 class="list-group-item-heading">Right</h4>
                   {{>rx}}
                 {{/with}}
             </div>
@@ -37,6 +34,7 @@
 
 <template name="findGlasses">
     <div class="row">
+      {{> quickForm collection="Glasses" id="findGlass" type="update" omitFields="images,number,frame,lens"}}
         <div class="col-md-12">
             <div class="list-group">
                 {{> glasses }}

@@ -18,9 +18,18 @@
 
     <div class="row">
         <div class="col-md-4">
-            {{>buyButton}}
-            <div class="well">
-                {{{this.body}}}
+            <div class="col-md-4">
+                {{#with leftRx}}
+                <h4 class="list-group-item-heading">Left</h4>
+                  {{>rx}}
+                {{/with}}
+            </div>
+
+            <div class="col-md-4">
+                {{#with rightRx}}
+                <h4 class="list-group-item-heading">Right</h4>
+                  {{>rx}}
+                {{/with}}
             </div>
         </div>
 
@@ -36,3 +45,9 @@
     {{/with}}
 
 </template>
+
+<!-- <template name="rx">
+  <p class="list-group-item-text">Sphere {{{this.sphere}}}</p>
+  <p class="list-group-item-text">Cylinder {{{this.cylinder}}}</p>
+  <p class="list-group-item-text">Axis {{this.axis}}</p>
+</template> -->
