@@ -122,7 +122,7 @@ scroll through our list. You probably don't want to change
 this unless you know what you are doing.
  */
 Glasses.findList = new Meteor.Pagination(Glasses, {
-    infinite: true,
+    // infinite: true,
     itemTemplate: 'glassInFindList',
     sort: {
         createdAt: -1
@@ -130,5 +130,8 @@ Glasses.findList = new Meteor.Pagination(Glasses, {
     availableSettings: {
         sort: true
     },
-    fastRender: true
+    fastRender: true,
+    auth:function(){
+      return [glassesQuery,{}];
+    }
 });
