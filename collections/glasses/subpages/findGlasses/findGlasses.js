@@ -56,7 +56,7 @@ if(Meteor.isServer){
   glassesQuery = {};
   Meteor.methods({
     searchGlasses:function(query){
-      query = {};
+      // query = {};
       return Glasses.find(query,{limit:10}).fetch();
     }
   });
