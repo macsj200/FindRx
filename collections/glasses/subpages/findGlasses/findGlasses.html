@@ -26,15 +26,15 @@
 </template>
 
 <template name="rx">
-  <p class="list-group-item-text">Sphere {{{this.sphere}}}</p>
+  <p class="list-group-item-text">Spherrrre {{{this.sphere}}}</p>
   <p class="list-group-item-text">Cylinder {{{this.cylinder}}}</p>
   <p class="list-group-item-text">Axis {{this.axis}}</p>
 </template>
 
-
-<template name="findGlasses">
+<!-- Renders search results -->
+<template name="possibleGlasses">
     <div class="row">
-      {{> quickForm collection="Glasses" id="findGlass" type="update" omitFields="images,number,frame,lens"}}
+        {{> quickForm collection="Glasses" id="findGlass" type="update" omitFields="images,number,frame,lens"}}
         <div class="col-md-12">
             <div class="list-group">
               {{#each glasses}}
@@ -51,6 +51,26 @@
         </div>
     </div>
 </template>
+
+<!-- <template name="findGlasses">
+    <div class="row">
+      {{> quickForm collection="Glasses" id="findGlass" type="update" omitFields="images,number,frame,lens"}}
+        <div class="col-md-12">
+            <div class="list-group">
+              {{#each glasses}}
+              {{#with leftRx}}
+                {{> rx}}
+              {{/with}}
+
+              {{#with rightRx}}
+                {{> rx}}
+              {{/with}}
+              {{/each}} -->
+                <!-- {{> glasses }} -->
+            <!-- </div>
+        </div>
+    </div>
+</template> -->
 
 <!-- <template name="glasses">
     {{> pages}}

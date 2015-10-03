@@ -85,7 +85,7 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.findGlasses.helpers({
+  Template.possibleGlasses.helpers({
     glasses:function(){
       return Session.get('glasses')
     }
