@@ -19,13 +19,22 @@ var lcyl2 = 2;
 var raxis2 = 3;
 var laxis2 = 3;
 
-var weights = new Matrix([SPH_WEIGHT, SPH_WEIGHT, CYL_WEIGHT, CYL_WEIGHT, AXIS_WEIGHT, AXIS_WEIGHT]);
+function getSimScore(rsph1, lsph1, rcyl1, lcyl1, raxis1, laxis1, rsph2, lsph2, rcyl2, lcyl2, raxis2, laxis2) {
+	var weights = new Matrix([SPH_WEIGHT, SPH_WEIGHT, CYL_WEIGHT, CYL_WEIGHT, AXIS_WEIGHT, AXIS_WEIGHT]);
 
-var prescription = new Matrix(weights.mul(new Matrix([rsph1, lsph1, rcyl1, lcyl1, raxis1, laxis1])).data[0]);
-var glasses = new Matrix(weights.mul(new Matrix([rsph2, lsph2, rcyl2, lcyl2, raxis2, laxis2])).data[0]);
+	var prescription = new Matrix(weights.mul(new Matrix([rsph1, lsph1, rcyl1, lcyl1, raxis1, laxis1])).data[0]);
+	var glasses = new Matrix(weights.mul(new Matrix([rsph2, lsph2, rcyl2, lcyl2, raxis2, laxis2])).data[0]);
 
-// dot product
-var dotProduct = prescription.dot(glasses.trans()).data[0][0];
+	var simScore = inner_product(prescription, glasses) / (norm(prescription) * norm(glasses));
+	simScore = Math.round(simScore * 10000) / 10000;
+	return simScore;
+	// console.log(simScore);
+}
+
+// inner product
+function inner_product(a, b){
+	return a.dot(b.trans()).data[0][0];
+}
 
 // norm function
 function norm(matrix) {
@@ -37,6 +46,4 @@ function norm(matrix) {
 	return Math.sqrt(squared_sum);
 }
 
-var simScore = dotProduct / (norm(prescription) * norm(glasses));
-simScore = Math.round(simScore * 10000) / 10000;
-console.log(simScore);
+// console.log(getSimScore(rsph1, lsph1, rcyl1, lcyl1, raxis1, laxis1, rsph2, lsph2, rcyl2, lcyl2, raxis2, laxis2));
