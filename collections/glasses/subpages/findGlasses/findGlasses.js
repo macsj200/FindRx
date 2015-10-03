@@ -33,9 +33,16 @@ var constructAxisQuery = function(axis){
   //TODO check this function
   var range = 30;
 
-  var query = constructRangeQuery((axis - range) % 180, (axis + range) % 180);
+  if(axis + range > 180){
+    return {$or:[constructRangeQuery(0,(axis + range) % 180),
+      constructRangeQuery(axis - range,180)]};
+  }
 
-  return query;
+  if(axis - range < 0){
+    return {$or:[constructRangeQuery(0,axis + range),
+      constructRangeQuery(180 + (axis - range),180)]};
+  }
+  return constructRangeQuery((axis - range) % 180, (axis + range) % 180);
 };
 
 var constructGlassesQuery = function(glasses){
