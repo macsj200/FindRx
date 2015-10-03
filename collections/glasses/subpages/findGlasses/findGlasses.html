@@ -37,12 +37,21 @@
       {{> quickForm collection="Glasses" id="findGlass" type="update" omitFields="images,number,frame,lens"}}
         <div class="col-md-12">
             <div class="list-group">
-                {{> glasses }}
+              {{#each glasses}}
+              {{#with leftRx}}
+                {{> rx}}
+              {{/with}}
+
+              {{#with rightRx}}
+                {{> rx}}
+              {{/with}}
+              {{/each}}
+                <!-- {{> glasses }} -->
             </div>
         </div>
     </div>
 </template>
 
-<template name="glasses">
+<!-- <template name="glasses">
     {{> pages}}
-</template>
+</template> -->

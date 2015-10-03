@@ -15,15 +15,15 @@ if (Meteor.isClient) {
        this.render('listGlassesPage');
     });
 
-    Template.listGlassesPage.helpers({
-       hasResults: function() {
-          //  return Glasses.find().count();
-       },
-       sortSettings: function() {
-        return {
-            // createdAt: -1
-        }
-      }
-    });
+    // Template.listGlassesPage.helpers({
+    //    hasResults: function() {
+    //       //  return Glasses.find().count();
+    //    },
+    //    sortSettings: function() {
+    //     return {
+    //         // createdAt: -1
+    //     }
+    //   }
+    // });
 
 }

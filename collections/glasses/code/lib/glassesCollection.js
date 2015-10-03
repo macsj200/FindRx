@@ -121,17 +121,17 @@ This is our pagination object. It lets us do an infinite
 scroll through our list. You probably don't want to change
 this unless you know what you are doing.
  */
-Glasses.findList = new Meteor.Pagination(Glasses, {
-    // infinite: true,
-    itemTemplate: 'glassInFindList',
-    sort: {
-        createdAt: -1
-    },
-    availableSettings: {
-        sort: true
-    },
-    fastRender: true,
-    auth:function(){
-      return [glassesQuery,{}];
-    }
-});
+// Glasses.findList = new Meteor.Pagination(Glasses, {
+//     // infinite: true,
+//     itemTemplate: 'glassInFindList',
+//     sort: {
+//         createdAt: -1
+//     },
+//     availableSettings: {
+//         sort: true
+//     },
+//     fastRender: true,
+//     auth:function(){
+//       return [glassesQuery,{}];
+//     }
+// });

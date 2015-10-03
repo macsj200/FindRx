@@ -55,14 +55,15 @@ var constructGlassesQuery = function(glasses){
 if(Meteor.isServer){
   glassesQuery = {};
   Meteor.methods({
-    setGlassesAuthQuery:function(query){
-      glassesQuery = query;
-      Glasses.findList.reload();
+    searchGlasses:function(query){
+      query = {};
+      return Glasses.find(query,{limit:10}).fetch();
     }
   });
 }
 
 if (Meteor.isClient) {
+  Session.set('glasses',[]);
   AutoForm.hooks({
     findGlass:{
       before:{
@@ -74,13 +75,19 @@ if (Meteor.isClient) {
 
           // console.log(query);
 
-          Meteor.call('setGlassesAuthQuery', searchQuery, function(err,res){
-            // console.log(res);
+          Meteor.call('searchGlasses', searchQuery, function(err,res){
+            Session.set('glasses',res);
           });
 
           this.result(false);
         }
       }
+    }
+  });
+
+  Template.findGlasses.helpers({
+    glasses:function(){
+      return Session.get('glasses')
     }
   });
 
