@@ -8,9 +8,9 @@ if (Meteor.isClient) {
     //    this.render('homePage');
     //});
 
-        Router.route('homePage', {
-            path: '/'
-        });
+    Router.route('homePage', {
+        path: '/'
+    });
 
     Template.homePage.helpers({
 
@@ -19,5 +19,8 @@ if (Meteor.isClient) {
     Template.homePage.events({
 
     });
+
+    // Move this?
+    document.title = "FindRx"
 
 }
