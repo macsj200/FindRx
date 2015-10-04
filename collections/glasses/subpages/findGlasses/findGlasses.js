@@ -113,8 +113,9 @@ if(Meteor.isServer){
         else if (idealMatrixNorm == 0){
           return actualMatrixNorm;
         }
+        // ignoring the glasses with all 0s parameters
         else if (actualMatrixNorm == 0) {
-          return idealMatrixNorm;
+          return 0;
         }
         else {
           var cosSim = innerProductValue / (idealMatrixNorm * actualMatrixNorm);
@@ -146,6 +147,7 @@ if(Meteor.isServer){
       }
 
       res = res.map(getSimScore);
+      res.sort(function(a,b) { return b.cosSim - a.cosSim});
 
       console.log(res);
 
