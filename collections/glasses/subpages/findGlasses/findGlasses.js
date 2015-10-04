@@ -185,7 +185,8 @@ if (Meteor.isClient) {
       return Session.get('glasses');
     },
     decimalToPercent:function(decimal) {
-      return cosSim * 100;
+      console.log(decimal);
+      return String(Math.round(decimal * 100)) + '%';
     }
   });
 
