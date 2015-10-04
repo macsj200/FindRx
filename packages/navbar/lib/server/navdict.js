@@ -4,5 +4,5 @@
 
 orion.dictionary.addDefinition('title', 'navbar', {
     type: String,
-    label: 'Nav Bar Title'
+    label: 'FindRx'
 });
