@@ -10,14 +10,14 @@
             <div class="col-md-4">
                 {{#with leftRx}}
                 <h4 class="list-group-item-heading">Left</h4>
-                  {{>rx}}
+                    {{>rx}}
                 {{/with}}
             </div>
 
             <div class="col-md-4">
                 {{#with rightRx}}
                 <h4 class="list-group-item-heading">Right</h4>
-                  {{>rx}}
+                    {{>rx}}
                 {{/with}}
             </div>
         </div>
@@ -31,8 +31,30 @@
   <p class="list-group-item-text">Axis {{this.axis}}</p>
 </template>
 
+<!-- Renders search results -->
+<template name="possibleGlasses">
+    <div class="row">
+        {{> quickForm collection="Glasses" id="findGlass" type="update" omitFields="images,number,frame,lens"}}
+        <div class="col-md-12">
+            <div class="list-group">
+              {{#each glasses}}
+                  <div class="col-md-6 glasses-panel " id="{{this.number}}">
+                      <div class="panel panel-default panel-body">
+                        <span class="fa fa-circle fa-2x card-icon match-rating" style="color:rgb(117, 156, 255)"></span>
+                        <span class="fa fa-close fa-4x card-icon close" onclick="this.parentNode.parentNode.remove();"></span>
+                        <a href="/glasses/{{this._id}}">
+                            <img class="glasses-img center-block" src="http://pngimg.com/upload/glasses_PNG49.png"/>
+                        </a>
+                      </div>
+                  </div>
+              {{/each}}
+                <!-- {{> glasses }} -->
+            </div>
+        </div>
+    </div>
+</template>
 
-<template name="findGlasses">
+<!-- <template name="findGlasses">
     <div class="row">
       {{> quickForm collection="Glasses" id="findGlass" type="update" omitFields="images,number,frame,lens"}}
         <div class="col-md-12">
@@ -45,12 +67,12 @@
               {{#with rightRx}}
                 {{> rx}}
               {{/with}}
-              {{/each}}
+              {{/each}} -->
                 <!-- {{> glasses }} -->
-            </div>
+            <!-- </div>
         </div>
     </div>
-</template>
+</template> -->
 
 <!-- <template name="glasses">
     {{> pages}}

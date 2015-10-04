@@ -4,23 +4,23 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h3>
-                    Glasses
-                </h3>
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>Glasses <small>| search the database</small></h1>
+                </div>
             </div>
-            <div class="col-md-offset-4 col-md-4">
+            <!-- <div class="col-md-offset-4 col-md-4">
                 {{#if currentUser}}
                     <a href="/glasses/create" class="btn btn-primary btn-block">
-                        Add new Glass
+                        Add new Glasses
                     </a>
                 {{/if}}
-            </div>
+            </div> -->
         </div>
 
         <br>
 
-        {{> findGlasses sort=sortSettings }}
+        {{> possibleGlasses sort=sortSettings }}
     </div>
 
 

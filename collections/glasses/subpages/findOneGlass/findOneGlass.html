@@ -16,30 +16,28 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <div class="col-md-4">
-                {{#with leftRx}}
-                <h4 class="list-group-item-heading">Left</h4>
-                  {{>rx}}
-                {{/with}}
+    <div class="col-md-12">
+        {{#each this.images}}
+            <img src="{{this.url}}" class="img-responsive center-block"/>
+        {{/each}}
+        {{#unless this.images}}
+            <img src="http://www.39dollarglasses.com/store/images/items_large/700/3299_Black.jpg" class="img-responsive center-block"/>
+        {{/unless}}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-md-6">
+                    {{#with leftRx}}
+                    <h4 class="list-group-item-heading">Left</h4>
+                      {{>rx}}
+                    {{/with}}
+                </div>
+                <div class="col-md-6">
+                    {{#with rightRx}}
+                    <h4 class="list-group-item-heading">Right</h4>
+                      {{>rx}}
+                    {{/with}}
+                </div>
             </div>
-
-            <div class="col-md-4">
-                {{#with rightRx}}
-                <h4 class="list-group-item-heading">Right</h4>
-                  {{>rx}}
-                {{/with}}
-            </div>
-        </div>
-
-        <div class="col-md-8">
-            {{#each this.images}}
-                <img src="{{this.url}}" class="img-responsive center-block"/>
-            {{/each}}
-            {{#unless this.images}}
-                <img src="http://lorempixel.com/output/sports-q-c-1418-913-8.jpg" class="img-responsive center-block"/>
-            {{/unless}}
         </div>
     </div>
     {{/with}}
