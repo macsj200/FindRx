@@ -188,4 +188,5 @@ if (Meteor.isClient) {
       return cosSim * 100;
     }
   });
+
 }
