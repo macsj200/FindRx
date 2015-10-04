@@ -1,0 +1,33 @@
+.glasses-panel {
+    height: 250px;
+    padding-left: 25px;
+    padding-right:25px;
+    margin-bottom: 50px;
+}
+
+.panel-body {
+    height: 100%;
+}
+
+.glasses-img {
+    padding-top: 10px;
+    height: 100%;
+}
+
+@media(max-width: 768px) {
+    .glasses-img {
+        height: 80%;
+    }
+}
+
+.match-rating {
+    position: absolute;
+    bottom: 15px;
+    left: 40px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 40px;
+}
