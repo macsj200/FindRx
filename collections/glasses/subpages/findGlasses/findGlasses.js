@@ -87,8 +87,10 @@ if (Meteor.isClient) {
 
   Template.possibleGlasses.helpers({
     glasses:function(){
-      return Session.get('glasses')
+      return Session.get('glasses');
+    },
+    decimalToPercent:function(decimal) {
+      return cosSim * 100;
     }
   });
-
 }
