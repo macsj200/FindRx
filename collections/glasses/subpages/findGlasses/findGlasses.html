@@ -44,12 +44,12 @@
               {{#each glasses}}
                   <div class="col-md-6 glasses-panel " id="{{this.number}}">
                       <div class="panel panel-default panel-body">
-                        <span class="fa fa-close fa-4x card-icon close" onclick="this.parentNode.parentNode.remove();"></span>
+                        <span class="fa fa-close fa-4x card-icon close" onclick='this.parentNode.parentNode.remove();'></span>
                         <a href="/glasses/{{this._id}}">
                             <img class="glasses-img center-block" src="http://pngimg.com/upload/glasses_PNG49.png"/>
                         </a>
                         <span class="fa fa-circle fa-2x card-icon match-rating" style="opacity:{{decimalToPercent cosSim}}"></span>
-                        <p class="match-percent"><strong>90{{decimalToPercent cosSim}}%</strong></p>
+                        <p class="match-percent"><strong>{{decimalToPercent cosSim}}%</strong></p>
                       </div>
                   </div>
               {{/each}}
