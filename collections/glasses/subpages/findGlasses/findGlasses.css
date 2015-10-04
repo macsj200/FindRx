@@ -31,3 +31,12 @@
     top: 10px;
     right: 40px;
 }
+
+.btn-submit {
+    width: 150px;
+    margin: 10px auto;
+}
+
+hr {
+    margin: 40px 0px;
+}
