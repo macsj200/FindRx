@@ -132,7 +132,7 @@ if(Meteor.isServer){
           Vector = linearAlgebra.Vector,
           Matrix = linearAlgebra.Matrix;
 
-      var res = Glasses.find(query).fetch();
+      var res = Glasses.find(query,{limit:10}).fetch();
 
 
       const SPH_WEIGHT = 100;
