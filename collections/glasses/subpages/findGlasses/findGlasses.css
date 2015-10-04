@@ -14,9 +14,9 @@
     height: 100%;
 }
 
-@media(max-width: 768px) {
+@media(max-width: 400px) {
     .glasses-img {
-        height: 80%;
+        height: 100%;
     }
 }
 

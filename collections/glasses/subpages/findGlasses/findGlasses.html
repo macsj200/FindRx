@@ -26,7 +26,7 @@
 </template>
 
 <template name="rx">
-  <p class="list-group-item-text">Spherrrre {{{this.sphere}}}</p>
+  <p class="list-group-item-text">Sphere {{{this.sphere}}}</p>
   <p class="list-group-item-text">Cylinder {{{this.cylinder}}}</p>
   <p class="list-group-item-text">Axis {{this.axis}}</p>
 </template>
@@ -42,7 +42,9 @@
                       <div class="panel panel-default panel-body">
                         <span class="fa fa-circle fa-2x card-icon match-rating" style="color:rgb(117, 156, 255)"></span>
                         <span class="fa fa-close fa-4x card-icon close" onclick="this.parentNode.parentNode.remove();"></span>
-                        <img class="glasses-img center-block" src="http://pngimg.com/upload/glasses_PNG49.png"/>
+                        <a href="/glasses/{{this._id}}">
+                            <img class="glasses-img center-block" src="http://pngimg.com/upload/glasses_PNG49.png"/>
+                        </a>
                       </div>
                   </div>
               {{/each}}
