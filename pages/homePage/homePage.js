@@ -20,7 +20,7 @@ if (Meteor.isClient) {
 
     });
 
-}
+    // Move this?
+    document.title = "FindRx"
 
-// Move this?
-document.title = "FindRx"
+}
