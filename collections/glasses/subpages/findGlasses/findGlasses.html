@@ -34,7 +34,11 @@
 <!-- Renders search results -->
 <template name="possibleGlasses">
     <div class="row">
-        {{> quickForm collection="Glasses" id="findGlass" type="update" omitFields="images,number,frame,lens"}}
+
+        {{> findGlassesForm }}
+
+        <hr>
+
         <div class="col-md-12">
             <div class="list-group">
               {{#each glasses}}
@@ -52,6 +56,43 @@
             </div>
         </div>
     </div>
+</template>
+
+<template name="findGlassesForm">
+    {{#autoForm collection="Glasses" id="findGlass" type="update" omitFields="images,number,frame,lens"}}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Left Eye</h4>
+                </div>
+                <div class="panel-body">
+                    <fieldset>
+                        {{> afQuickField name='leftRx.sphere'}}
+                        {{> afQuickField name='leftRx.cylinder'}}
+                        {{> afQuickField name='leftRx.axis'}}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Right Eye</h4>
+                </div>
+                <div class="panel-body">
+                    <fieldset>
+                        {{> afQuickField name='rightRx.sphere'}}
+                        {{> afQuickField name='rightRx.cylinder'}}
+                        {{> afQuickField name='rightRx.axis'}}
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-submit center-block">Search</button>
+    {{/autoForm}}
 </template>
 
 <!-- <template name="findGlasses">
