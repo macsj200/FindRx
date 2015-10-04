@@ -83,6 +83,11 @@ var constructGlassesQuery = function(glasses){
 }
 
 if(Meteor.isServer){
+  Meteor.startup(function(){
+    Glasses.remove({'leftRx.sphere':0,'leftRx.cylinder':0,'leftRx.axis':0,
+                    'rightRx.sphere':0,'rightRx.cylinder':0,'rightRx.axis':0});
+  });
+
   glassesQuery = {};
   Meteor.methods({
     searchGlasses:function(query,idealGlasses){
