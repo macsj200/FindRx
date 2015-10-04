@@ -72,6 +72,7 @@ meteorhacks:collection-utils@1.2.0
 meteorhacks:fast-render@2.9.0
 meteorhacks:inject-data@1.4.0
 meteorhacks:inject-initial@1.0.2
+meteorhacks:npm@1.5.0
 meteorhacks:picker@1.0.3
 meteoric:ionic@0.1.19
 meteortoys:toykit@0.8.7
@@ -91,6 +92,7 @@ nicolaslopezj:reactive-templates@1.2.1
 nicolaslopezj:roles@1.2.0
 nicolaslopezj:router-layer@0.0.11
 npm-bcrypt@0.7.8_2
+npm-container@1.2.0
 oauth@1.1.4
 oauth1@1.1.4
 oauth2@1.1.3

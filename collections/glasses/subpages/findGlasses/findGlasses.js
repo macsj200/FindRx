@@ -85,11 +85,71 @@ var constructGlassesQuery = function(glasses){
 if(Meteor.isServer){
   glassesQuery = {};
   Meteor.methods({
-    searchGlasses:function(query){
-      // return query;
-      // query = {};
-      // console.log(query);
-      return Glasses.find(query,{limit:10}).fetch();
+    searchGlasses:function(query,idealGlasses){
+      // inner product
+      function innerProduct(a, b){
+        return a.dot(b.trans()).data[0][0];
+      }
+
+      // norm function
+      function norm(matrix) {
+        m = matrix.data;
+        var squared_sum = 0;
+        for (i = 0; i < m[0].length; i++) {
+          squared_sum += Math.pow(m[0][i], 2);
+        }
+        return Math.sqrt(squared_sum);
+      }
+
+      // calculates innerProduct(ideal, actual) / (norm(actual)*norm(ideal))
+      function calcCosSim(idealMatrix, actualMatrix) {
+        var innerProductValue = innerProduct(idealMatrix, actualMatrix);
+        var idealMatrixNorm = norm(idealMatrix);
+        var actualMatrixNorm = norm(actualMatrix);
+        // avoids the edge case where denominator = 0;
+        if (idealMatrixNorm == 0 && actualMatrixNorm == 0) {
+          return 1;
+        }
+        else if (idealMatrixNorm == 0){
+          return actualMatrixNorm;
+        }
+        else if (actualMatrixNorm == 0) {
+          return idealMatrixNorm;
+        }
+        else {
+          var cosSim = innerProductValue / (idealMatrixNorm * actualMatrixNorm);
+          return Math.round(cosSim * 10000) / 10000;
+        }
+      }
+
+      var linearAlgebra = Meteor.npmRequire('linear-algebra')(),     // initialise it
+          Vector = linearAlgebra.Vector,
+          Matrix = linearAlgebra.Matrix;
+
+      var res = Glasses.find(query).fetch();
+
+
+      const SPH_WEIGHT = 100;
+      const CYL_WEIGHT = 10;
+      const AXIS_WEIGHT = 1;
+
+      function getSimScore(actualGlasses) {
+      	var weights = new Matrix([SPH_WEIGHT, SPH_WEIGHT, CYL_WEIGHT, CYL_WEIGHT, AXIS_WEIGHT, AXIS_WEIGHT]);
+
+      	var idealMatrix = new Matrix(weights.mul(new Matrix([idealGlasses["rightRx.sphere"], idealGlasses["leftRx.sphere"], idealGlasses["rightRx.cylinder"], idealGlasses["leftRx.cylinder"], idealGlasses["rightRx.axis"], idealGlasses["leftRx.axis"]])).data[0]);
+      	// var actualMatrix = new Matrix(weights.mul(new Matrix([actualGlasses["rightRx.sphere"], actualGlasses["leftRx.sphere"], actualGlasses["rightRx.cylinder"], actualGlasses["leftRx.cylinder"], actualGlasses["rightRx.axis"], actualGlasses["leftRx.axis"]])).data[0]);
+        var actualMatrix = new Matrix(weights.mul(new Matrix([actualGlasses.rightRx.sphere, actualGlasses.leftRx.sphere, actualGlasses.rightRx.cylinder, actualGlasses.leftRx.cylinder, actualGlasses.rightRx.axis, actualGlasses.leftRx.axis])).data[0]);
+
+        actualGlasses.cosSim = calcCosSim(idealMatrix, actualMatrix);
+
+      	return actualGlasses;
+      }
+
+      res = res.map(getSimScore);
+
+      console.log(res);
+
+      return res;
     }
   });
 }
@@ -107,7 +167,7 @@ if (Meteor.isClient) {
 
           // console.log(query);
 
-          Meteor.call('searchGlasses', searchQuery, function(err,res){
+          Meteor.call('searchGlasses', searchQuery, doc.$set, function(err,res){
             console.log(res);
             Session.set('glasses',res);
           });

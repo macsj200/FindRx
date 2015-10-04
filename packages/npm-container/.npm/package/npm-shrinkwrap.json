@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "linear-algebra": {
+      "version": "3.1.1"
+    }
+  }
+}
